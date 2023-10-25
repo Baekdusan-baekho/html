@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<body>
+    <button type="button" id="btn1">mybutton</button>
+    <button type="button" id="btn2">mybutton</button>
+    <button type="button" id="btn3">mybutton</button>
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            //$("#but1, #but2, #but3").button();
+            $("button").button();
+
+            $("button").click(function(){
+                let id = this.id;
+                //consol.log(id);
+                switch(id){
+                    // 해당 조건에 맞는 case를 구분해서 수행하는 제어문
+                    case "btn1":
+                        $(this).css("backgroundColor", "#00bfff");
+                        break;
+                    case "btn2":
+                        $(this).css("backgroundColor", "#932866");
+                        break;
+                    case "btn3":
+                        $(this).css("backgroundColor", "#3aa9a3");
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

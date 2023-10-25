@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul.container{
+            list-style: none;
+            padding: 0;
+            border: 1px solid red;
+            width: 80%;
+            height: 120px;
+            margin: auto;
+
+            /*플렉스 개념 인라인 블록 같이 사용 메뉴만들 때*/ 
+            display: flex; /*옆으로 알아서 간격 붙여서 조정이 되어 있다*/
+            flex-direction: row; /*기본값이 row이다*/
+            flex-wrap: wrap; /*기본 값이 nowrap이다*/
+            /*justify-content: flex-start;*/ /*기본값  정렬이다 처음 끝 중간 */
+            /*justify-content: flex-end;*/
+            /*justify-content: center;*/
+            justify-content: space-between;
+        }
+        li.item{
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+            text-align: center;
+            line-height: 50px;
+            flex-grow: 1; /*자식요소간의 비율*/
+            
+        }
+    </style>
+</head>
+<body>
+    <ul class="container">
+        <li class="item">항목1</li>
+        <li class="item">항목2</li>
+        <li class="item">항목3</li>
+        <li class="item">항목4</li>
+        <li class="item">항목5</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="v1">값1:</label>
+    <input type="text" id="v1" name="val1"/><br/>
+    <label for="v2">값2:</label>
+    <input type="number" id="v2" name="vali2"/><br/>
+    <button type="button" onclick="exe()">확인</button>
+
+    <script>
+        function exe(){
+            //아이디가 v1인 요소 그리고 v2인 요소를 검색하자!
+            let m1 = document.getElementById("v1");
+            let m2 = document.getElementById("v2");
+
+            let m1_value = parseInt(m1.value);
+            let m2_value = parseInt(m2.value);
+
+            document.write(m1_value > m2_value); //m1_vlaue 값이 m2_value값보다 크다면 Ture, 아니면 false
+            document.write("<br/>");
+            document.write(m1_value < m2_value);//위에 것과 반대
+            document.write("<br/>");
+            document.write(m1_value <= m2_value);
+            document.write("<br/>");
+            document.write(m1_value >= m2_value);
+            document.write("<br/>");
+            document.write(m1_value != m2_value); //같지 않다면 True
+            document.write("<br/>");
+            document.write(m1_value == m2_value); //서로 같다면 True
+            document.write("<br/>");
+            document.write(m1_value);
+            document.write("<br/>");
+            document.write(m2_value);
+            
+        }
+    </script>
+</body>
+</html>

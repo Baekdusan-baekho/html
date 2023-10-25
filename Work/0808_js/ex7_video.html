@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        #myVideo{
+            border: 4px solid black;
+            border-radius: 7px;
+            width: 610px;
+            height: 460px;
+        }
+        #video_control{
+            width: 620px;
+            height: 30px;
+            background-color: #333;
+            color: #fff;
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-transform: uppercase; 
+            /* uppercase 소문자가 대문자로 바뀜 */
+            display: flex;
+            /* flex:	Block 특성의 Flex Container를 정의 */
+        }
+        .player_button{
+            width: 50px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            /* cursor 속성을 이용하면 해당 태그 위에 위치하는 마우스 커서의 모양을 바꿀 수 있습니다.
+            손가락 모양 포인터 */
+        }
+        #video_control>div{
+            height: 30px;
+            line-height: 30px;
+        }
+        #progress{
+            position: relative;
+            width: 475px;
+            background-color: #555;
+            margin-right: 5px;
+        }
+        #play_progress{
+            position: absolute;
+            background-color: #6c3;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>비디오 도구제작</h1>
+    </header>
+    <div id="contents">
+        <video id="myVideo" poster="./images/Step1.png">
+            <!-- video 안에 controls를 사용해야 동영상이 재생된다 -->
+            <source src="./media/Falls.mp4">
+        </video>
+        <div id="video_control">
+            <div id="play_toggle" class="player_button">play</div>
+            <div id="progress">
+                <div id="play_progress"></div>
+            </div>
+            <div id="time">
+                <span id="current_time">00:00</span>
+                /
+                <span id="duration" ></span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            //만약 브라우저가 video태그를 지원하지 않는다면 html5를 지원하지 않는 브라우저
+            //video태그와 video_control이라는 div태그가 의미가 없으므로
+            // 숨겨야 한다.
+            if(!document.createElement("video").canPlayType){
+               $("#video_control").hide();
+               return; //제어권 반환! 이후엔 수행하지 않는다. 더 이상 아무것도 안할거야
+            }
+
+            //제어가 현재 영역에 왔다는 것은 html5를 지원하는 경우!
+
+            //video요소를 미리찾아놓고, 나중에 사용자가 play버튼을
+            //클릭하면 실행하여야 한다.
+            let video = document.getElementById("myVideo");
+            $("#play_toggle").click(function(){
+                //현재 비디오가 정지된 상태일 때만 실행하자
+                if(video.paused){
+                    //정지 됐나? 물어봄 비디오가 정지된 상태일 때 플레이 해줌
+                    video.play();
+
+                    // 현재 play가 되면서 play라는 문자열을 pause로 변경
+                    $(this).text("pause");
+                }else{
+                    //play가 되고 있는 상태라면 정지해야 한다.
+                    video.pause();
+                    $(this).text("play");
+                }
+            });
+
+            //비디오가 끝까지 실행된 후 멈췄을 때 이벤트 적용
+            $(video).bind("ended", function(){
+                //this.play(); // 반복 재생
+                $("#play_toggle").text("play");
+            });
+
+            // 비디오 태그 안에 source에 연결된 파일이 load가 완료될 때
+            //비디오태그가 기억하고 있는 종료시간이 수정된다. 이것 또한
+            //이벤트로 접근할 수 있다.
+            $(video).bind("durationchange", function(){ //bind 이벤트 걸었네
+                //alert(this.duration); //영상길이 확인 13.265
+                //alert(formatTime(this.duration));
+                let str = formatTime(this.duration);
+                $("#duration").text(str);
+
+            });
+
+            //비디오가 실행될 때(실행시간이 변경될 때)
+            $(video).bind("timeupdate", function(){
+                //console.log("current:"+this.current);
+                let c_time = formatTime(this.currentTime); //리턴값을 받아놓음
+                $("#current_time").text(c_time);
+
+
+                //진행바(play_progress)를 현재 시간과 총시간(duration)을
+                // 100%로 두고 연산하여 너비를 구한다.
+
+                let timePercent = (this.currentTime/this.duration)*100;
+
+
+                //위에서 구한 백분율을 play_progress의 너비로 지정한다.
+                $("#play_progress").css("width", timePercent+"%")
+            });
+
+        });
+        function formatTime(time){// 73.212 ------> 01:13
+            console.log(time);
+            let second = Math.round(time); // 소수점 반올림 
+
+            let minute = Math.floor(second/60); // 소수점 절삭
+
+            // time의 값이 73.212라고 가정하면 second에는 73,
+            // minute에는 1이 들어감
+            //즉 second의 값이 정확한 초의 값이 아니다.
+            //이제 분을 가려냈으니 정확한 초의 값을 연산하여 넣어야 한다.
+            second = second%60;
+            
+            //이후의 seconds는 13이고, minute는 1
+            //실제 화면에 표현하는 문장은 01:13
+            //다시 말해서 표현할 값이 한자리면 앞에 0을 붙여야 합니다.
+            //(minute<10)조건이 참이면 "0"+minute을 수행하고 거짓이면  minute을 minut에 넣는다 3항 연산자
+            minute = (minute<10)?"0"+minute:minute;
+            //console.log(minute);
+            // if(minute < 10)
+            //    minute = "0"+minute;
+
+            second = (second<10)?"0"+second:second;
+            //console.log(second);
+
+            return minute+":"+second; //minute+":"+second 반환값
+
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let a = 10;
+        let b = 7;
+
+        //증감연산자는 2개 있음 ++, --
+        // ++ : 1씩 증가
+        // -- : 1씩 감소 
+        document.write(++a); // 11
+        document.write("<br/>");
+        document.write(--b); // 6
+        document.write("<br/>");
+        document.write(a++); // 11 뒤에거에  11 + 1 이다  출력한 후에 행이 바뀔 때 증가한다.
+        document.write("<br/>");
+        document.write(a); //12   write 쓰기를 하고난 뒤에 증가
+        //증감연산자가 앞에 있을 때 우선순위가 가장 높다
+        // 뒤에 있을 때는 우선순위게 가장 낮다 대입연산자보다 낮다
+        //뒤에 있다는 거는 남의 것 다 해주고 남은 것이 없을 때 줄이 내려올 때 슬그머니 증가시킨다.
+        document.write("<br/>");
+        document.write(++a + ++b); // 13 + 7
+        document.write("<br/>");
+        document.write(a);
+        document.write("<br/>");
+        document.write(b);
+        document.write("<br/>");
+        document.write(a, a++ + ++b); //21 이지만 행이 바뀔 때 a의 값이 증가하여 14가 된다 b 8
+        document.write("<br/>");
+        document.write(a);
+        document.write("<br/>");
+        document.write(b);
+        
+
+
+
+        
+
+    </script>
+</body>
+</html>

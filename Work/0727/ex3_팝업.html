@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/ex3.css">
+    <!--외부 css파일 연결법 -->
+
+</head>
+<body onload="init()">
+    <div id="wrap">
+        <header id="header">
+            <!--메뉴가 있다고 생각하자~!-->
+            <button type="button" onclick="exe()">팝업1</button>
+            <input type="button" value="팝업2"/>
+        </header>
+        <!--=======보여질 팝업창=======-->
+        <div id="popup">
+            <div id="title_bar">
+                <div id="exit_area">
+                    <a href="javascript:closed()"><!--<img src="./images/exit.png">-->닫기</a>
+                </div>
+            </div>
+            <div id="content">
+                <p>안녕하세요 저는 팝업입니다.</p>
+            </div>
+        </div>
+        <!--==========================-->
+    </div>
+
+    
+    <script>
+        function init(){
+            console.log("init함수");
+        }
+        // 자바스크립트 주석 한줄 주석
+        /* 여러줄 주석*/ 
+        //함수를 정의할 때는 반드시 function이라는 키워드를 사용해야 한다.
+        function exe(){
+            //alert("^^");
+            //현재문서(document)에서 아이디가 popup인 요소를 찾아 (body영역 전체)
+            //display라는 style속성을 block으로 지정하면 화면에 보이게 된다.
+            
+            //1. 현재문서(document)에서 아이디가 popup인 요소 객체를 찾는다
+            //그리고 그것을 변수 obj에 저장한다.
+
+            var obj = document.getElementById("popup");
+            
+            //찾은 객체의 display라는 style값을 block으로 지정한다.
+            obj.style.display = "block";
+
+        }
+        function closed(){
+            var obj = document.getElementById("popup");
+            obj.style.display = "none"; //숨긴다 안보이게 한다.
+        }
+        document
+    </script>
+</body>
+</html>
+
+<!--
+    div#popup{
+            border: 1px solid black;
+            width: 250px;
+            height: 150px;
+            background-color: rgb(170, 168, 168);
+            /*현재 팝업창은 body를 기준하여 위에서 110px, 왼쪽에서 350px 떨어진 곳에 위치한다*/
+            position: absolute;
+            top: 110px;
+            left: 350px;
+            display: none;
+            display: block;
+        }
+        div#title_bar{
+            width: 100%;
+            height: 20px;
+            border-bottom: 1px solid black;
+            background-color: rgb(57, 174, 252);
+            text-align: right;
+            position: relative;
+        }
+        div#exit_area{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            /* border: 1px solid red; */
+            right: 0px;
+        }
+        /* id가 exit_area인 요소안에 있는 a태그의 크기를 16px로 지정하고 배경이미지를 exit_png로 바꾼다
+        그리고 글꼴은 안보이도록 하시오  절대좌표를 가지며 오른쪽 끝에 존재해야 한다.*/
+        div#exit_area>a{
+            background-image: url(./images/exit.png);
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            /* border: 1px solid red; */
+            font-size: 0;
+            position: absolute;
+            text-indent: -999999px;
+            right: 0px;
+            background-image: url(./images/exit.png);
+            background-size: 20px;
+            top: 0px;
+            background-repeat: no-repeat;
+        }
+        div#title_bar img{
+            width: 20px;
+            height: 20px;
+
+        }
+-->

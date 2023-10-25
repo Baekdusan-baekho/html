@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            width: 750px;
+            margin: auto;
+        }
+        body{
+            padding: 0;
+        }
+        #comp{
+            width: 100px;
+            padding: 5px;
+        }
+        #t1{
+            margin: auto;
+            width: 770px;
+            border-collapse: collapse;
+
+        }
+        #t1 th, #t1 td{
+            text-align: center;
+            width: 150px;
+        }
+        thead tr{
+            margin: auto;
+            display: inline-block;
+        }
+        tbody tr{
+            height: 240px;
+            display: inline-block;
+            margin: 10px 0 30px 65px;
+            border: 1px solid black;
+
+        }
+        td{
+            display: block;
+            
+        }
+        #t1 tbody tr>td:last-child{
+            margin-bottom: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <fieldset>
+            <legend>비동기식통신</legend>
+            
+            <select name="" id="aa">
+                <option value="bb">제조회사</option>
+                <option value="cc">제품타입</option>
+                <option value="dd">최고가격</option>
+            </select>
+            <input type="text" id="comp" value="Lip liner"/>
+            <button type="button" onclick="exe()">확인</button>
+        </fieldset>
+    </form>
+    <div id="content">
+        <table id="t1">
+            <colgroup>
+                <col width="2100px"/>    
+                <col width="*"/>    
+                <col width="60px"/>    
+                <col width="150px"/>    
+            </colgroup>
+            <thead>
+                <!-- <tr>
+                    <th>이미지</th>
+                    <th>제품명</th>
+                    <th>가격</th>
+                </tr> -->
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        
+        function exe(){
+            // 서버호출
+            // document.forms[0].submit(); 동기식 방식
+
+            // 사용자가 입력한 제조회사명 가져오기
+            let comp = $("#comp").val();
+            var aa = document.getElementById("aa");
+
+            function mvp(){
+                //요청에 성공했을 때 수행하는 곳
+                    //data가 서버로 부터 전달되어오는 return값이다.
+                    console.log(data);
+                    let msg = "";
+                    for(let a=0; a<data.length; a++){
+                        msg += "<tr>";
+                        msg += "<td><img src='"+data[a].image_link+"'width='100'height='100'border='1px solid black'></td>"
+                        msg += "<td><a href='"+data[a].product_link+"'font-size='auto'height='100'>"+
+                            data[a].name+
+                            "</a></td>"
+                        msg += "<td>$"+data[a].price+"</td>"
+                        msg += "</tr>";
+                    }
+                    $("#t1>tbody").html(msg);
+            }
+
+
+
+
+            if(aa.options[aa.selectedIndex].value == "bb"){
+                // alert("00");
+                // 서버호출 ( 비동기식 )
+                $.ajax({
+                        url: "https://makeup-api.herokuapp.com/api/v1/products.json",
+                        data: {"brand":comp},
+                        type: "get",//"전송방식(get/post)",
+                        datatype: "json"//"서버로부터_응답되어온_자원(return되는_자료형(json))"
+                }).done(function(data){
+                    //요청에 성공했을 때 수행하는 곳
+                    //data가 서버로 부터 전달되어오는 return값이다.
+                    console.log(data);
+                    let msg = "";
+                    for(let a=0; a<data.length; a++){
+                        msg += "<tr>";
+                        msg += "<td><img src='"+data[a].image_link+"'width='100'height='100'border='1px solid black'></td>"
+                        msg += "<td><a href='"+data[a].product_link+"'font-size='auto'height='100'>"+
+                            data[a].name+
+                            "</a></td>"
+                        msg += "<td>$"+data[a].price+"</td>"
+                        msg += "</tr>";
+                    }
+                    $("#t1>tbody").html(msg);
+                }).fail(function(err){
+                        // 요청시 오류가 발생했을 때 수행하는 곳
+                })
+            }else if(aa.options[aa.selectedIndex].value == "cc"){
+                // alert("11");
+                // 서버호출 ( 비동기식 )
+                $.ajax({
+                        url: "https://makeup-api.herokuapp.com/api/v1/products.json",
+                        data: {"product_type":comp},
+                        type: "get",//"전송방식(get/post)",
+                        datatype: "json"//"서버로부터_응답되어온_자원(return되는_자료형(json))"
+                }).done(function(data){
+                    //요청에 성공했을 때 수행하는 곳
+                    //data가 서버로 부터 전달되어오는 return값이다.
+                    console.log(data);
+                    let msg = "";
+                    for(let a=0; a<data.length; a++){
+                        msg += "<tr>";
+                        msg += "<td><img src='"+data[a].image_link+"'width='150'height='150'border='1px solid black'></td>"
+                        msg += "<td><a href='"+data[a].product_link+"'font-size='auto'height='100'>"+
+                            data[a].name+
+                            "</a></td>"
+                        msg += "<td>$"+data[a].price+"</td>"
+                        msg += "</tr>";
+                    }
+                    $("#t1>tbody").html(msg);
+                }).fail(function(err){
+                        // 요청시 오류가 발생했을 때 수행하는 곳
+                })
+            }else if(aa.options[aa.selectedIndex].value == "dd"){
+                alert("22");
+                // 서버호출 ( 비동기식 )
+                $.ajax({
+                        url: "https://makeup-api.herokuapp.com/api/v1/products.json",
+                        data: {"price_less_than":comp},
+                        type: "get",//"전송방식(get/post)",
+                        datatype: "json"//"서버로부터_응답되어온_자원(return되는_자료형(json))"
+                }).done(function(data){
+                    //요청에 성공했을 때 수행하는 곳
+                    //data가 서버로 부터 전달되어오는 return값이다.
+                    console.log(data);
+                    let msg = "";
+                    for(let a=0; a<data.length; a++){
+                        msg += "<tr>";
+                        msg += "<td><img src='"+data[a].image_link+"'width='100'height='100'border='1px solid black'></td>"
+                        msg += "<td><a href='"+data[a].product_link+"'font-size='auto'height='100'>"+
+                            data[a].name+
+                            "</a></td>"
+                        msg += "<td>$"+data[a].price+"</td>"
+                        msg += "</tr>";
+                    }
+                    $("#t1>tbody").html(msg);
+                }).fail(function(err){
+                        // 요청시 오류가 발생했을 때 수행하는 곳
+                })
+            }
+
+
+            
+            
+
+            
+            // if(comp.trim().length > 0){
+
+            
+
+            //     // 서버호출 ( 비동기식 )
+            //     $.ajax({
+            //         url: "https://makeup-api.herokuapp.com/api/v1/products.json",
+            //         data: {"brand":comp},
+            //         type: "get",//"전송방식(get/post)",
+            //         datatype: "json"//"서버로부터_응답되어온_자원(return되는_자료형(json))"
+            //     }).done(function(data){
+            //         //요청에 성공했을 때 수행하는 곳
+            //         //data가 서버로 부터 전달되어오는 return값이다.
+            //         console.log(data);
+            //         let msg = "";
+            //         for(let a=0; a<data.length; a++){
+            //             msg += "<tr>";
+            //             msg += "<td><img src='"+data[a].image_link+"'width='100'></td>"
+            //             msg += "<td><a href='"+data[a].product_link+"'font-size='auto'>"+
+            //                 data[a].name+
+            //                 "</a></td>"
+            //             msg += "<td>$"+data[a].price+"</td>"
+            //             msg += "</tr>";
+            //         }
+            //         $("#t1>tbody").html(msg);
+            //     }).fail(function(err){
+            //         // 요청시 오류가 발생했을 때 수행하는 곳
+            //     })
+            // }
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- 제조회사를 클릭하면 회사명 검색 -->
+<!-- 제품타입을 클릭하면 제품타입 검색 -->
+<!-- 최고를 클릭하면 적은 가격보다 낮은 가격 검색 -->
+<!-- 같은 것들 함수로 만들기 -->
+<!-- css로 박스 예쁘게 만들기 -->

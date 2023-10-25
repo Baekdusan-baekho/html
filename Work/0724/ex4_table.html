@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네번째 예제</title>
+</head>
+<body>
+    <acticle>
+        <header>
+            <h1>테이블 연습 1</h1>
+            <h1>테이블 연습 2</h1>
+            <h1>테이블 연습 3</h1>
+        </header>
+        <p>
+            <table border="1" width="500">
+                <tr>
+                    <td>번호</td>
+                    <td>이름</td>
+                    <td>연락처</td>
+                    <td>이메일</td>
+                </tr>
+                <tr>
+                    <td>112899</td>
+                    <td>며루치</td>
+                    <td>01067855555</td>
+                    <td>anton@naver.com</td>
+                </tr>
+                <tr>
+                    <td>454168</td>
+                    <td>김태백</td>
+                    <td>0167788551</td>
+                    <td>backsoo@gmail.com</td>
+                </tr>
+            </table>
+        </p>
+        <p>
+            <table border="1" width="500">
+                <tfoot><!--테이블의 바닥글-->
+                    <tr>
+                        <td colspan="4">출처:한국ICT협회</td>
+                    </tr>
+                </tfoot>
+                <thead><!--테이블의 머리글-->
+                    <tr>
+                        <td>번호</td>
+                        <td>이름</td>
+                        <td>연락처</td>
+                        <td>이메일</td>
+                    </tr>
+                </thead>
+                <tbody><!--테이블의 데dl터-->
+                    <tr>
+                        <td>112899</td>
+                        <td>며루치</td>
+                        <td>01067855555</td>
+                        <td>anton@naver.com</td>
+                    </tr>
+                    <tr>
+                        <td>454168</td>
+                        <td>김태백</td>
+                        <td>0167788551</td>
+                        <td>backsoo@gmail.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <p>
+            <table border="1" width="600" summery="회원목록테이블">
+                <colgroup>
+                    <col width="80px"/>
+                    <col width="80px"/>
+                    <col width="130px"/>
+                    <col width="150px"/>
+                    <col width="*"/><!--별 남은 크기 전부-->
+                </colgroup>
+                <caption>회원목록</caption>
+                <tfoot><!--테이블의 바닥글-->
+                    <tr>
+                        <td colspan="5" >출처:한국ICT협회</td>
+                    </tr>
+                </tfoot>
+                <thead><!--테이블의 머리글-->
+                    <tr>
+                        <th>이미지</th>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>연락처</th>
+                        <th>이메일</th>
+                    </tr>
+                </thead>
+                <tbody><!--테이블의 데이터-->
+                    <tr>
+                        <td><img src="images/daum1.png" width="80px"/></td> <!-- src = 소스약자  ../는 상위폴더 안에 이미지-->
+                        <td>112899</td>
+                        <td>며루치</td>
+                        <td>01067855555</td>
+                        <td>anton@naver.com</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/naver.png" width="80px"/></td>
+                        <td>454168</td>
+                        <td>김태백</td>
+                        <td>01067788551</td>
+                        <td>backsoo@gmail.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </acticle>
+</body>
+</html>
+<!--
+    tr 테이블 로우 행
+    td 테이블 데이타 하나의 셀
+    첫번째꺼 촌스러워서 안 씀   웹 표준 벗어남 사용안함
+    두번째꺼 웹표준 결과는 다르지 않지만 이게 표준 thead, tbody 사용 의미 부여
+    thead 목록, 리스트, 제목, 머리글    tbody 데이터
+    tfoot 바닥, 마지막 행
+    한 행, 모든 열 합치기: colspan
+    3번째 완전 표준
+    서버에 데이터를 보낼 때는 from태그 사용 데이터를 받아서 서버로 보낼 때 사용
+-->

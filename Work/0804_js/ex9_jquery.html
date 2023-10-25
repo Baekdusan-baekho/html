@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="test">여기는 H1</h1>
+    <!--   p{p요소$}*3    -->
+    <p>p요소1</p>
+    <p>p요소2</p>
+    <p>p요소3</p>
+    <span>이것은 span</span>
+    <!-- p.test{p요소$} -->
+    <p class="test">p요소4</p>
+    <p>p요소5</p>
+    <div>여긴DIV</div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            let str = "";//문자열을 저장할 변수 선언
+            /*
+            //test라는 클래스를 가진 요소(h1,p) 그리고
+            //span요소, div요소 들을 하나의 배열로 수집한다.
+            let ar = $(".test, span, div")
+            
+            for(let a=0; a<ar.length; a++){
+                //str += ar[a].innerText+", ";
+                str += ar.eq(a).text()+", "
+            }
+            */
+           // 또는 .each   해당하는 애를 만날 때마다 여기있는 함수를 적용하세요   
+           $(".test,span,div").each(function(){  //for문 역활
+            //위에 선택자에 해당하는 요소를 만날 때마다 현재 영역을 수행합니다.
+            str += $(this).text()+", "; //지금 선택되서 들어온 애
+           });
+
+
+            alert(str);
+        });
+
+    </script>
+
+
+</body>
+</html>

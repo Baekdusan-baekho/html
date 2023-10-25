@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu{ /* 아이디가 메뉴인 ul 태그에 적용 */
+            list-style: none; /*리스트 아이템 앞에 점 삭제*/
+            /* border: 1px solid red; */
+            padding: 0px; /*왼쪽 여백 없음*/
+            padding-left: 0px; /*원래 이게 정석*/
+            width: 200px;
+            border-top: 2px solid black; /* ul 박스의 위쪽 선만 검정색으로 만듬*/
+        }
+        #menu>li{
+            border: 2px solid rgb(0, 0, 0);
+            height: 60px;
+            border-top: none; /* li 태그들의 위쪽 선 없앰*/
+            background-color: rgb(183, 250, 177);
+            text-align: center;
+            line-height: 60px; /* 높이 가운데에 맞추기 */
+
+        }
+        #menu>li>a{
+            display: block;  /* 인라인레벨을 블록레벨로 바꿈    보여달라는 뜻도 됨*/
+            height: 100%;
+            text-align: center;
+            line-height: 60px;   /* a 상자의 높이 중간 */
+            text-decoration: none; /* 글자 밑의 밑줄 없애기*/
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>수직메뉴</h1>
+        </header>
+        <ul id="menu">
+            <li><a href="">메&nbsp;&nbsp;뉴</a></li>
+            <li><a href="">카&nbsp;&nbsp;페</a></li>
+            <li><a href="">블로그</a></li>
+            <li><a href="">지식인</a></li>
+
+        </ul>
+    </div>
+    
+</body>
+</html>

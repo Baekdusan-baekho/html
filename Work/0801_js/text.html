@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            border: 1px solid red;
+            height: 280px;
+            width: 280px;
+            text-align: center;
+            color: blue;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            line-height: 280px;
+        }
+
+    </style>
+</head>
+<body>
+    <form method="post">
+        <label for="age">나이:</label>&nbsp;&nbsp;
+        <input type="number" id="age" name="u_age"/>&nbsp;&nbsp;&nbsp;
+        <button type="button" onclick="exe()">확인</button>
+    </form>
+
+    <div id="box"></div>
+
+
+    <script>
+        let box = document.getElementById("box");
+        let age = document.getElementById("age");
+
+
+        function exe(){
+            let age = document.getElementById("age");
+            let age_value = age.value;
+
+            if(age_value.trim().length > 0){
+                let age = parseInt(age_value);
+
+                if(age >= 100)
+                 box.innerText = "산신령";
+                else if(age >= 90)
+                 box.innerText = "90대";
+                else if(age >= 80)
+                 box.innerText = "80대";
+                else if(age >= 70)
+                 box.innerText = "70대";
+                else if(age >= 60)
+                 box.innerText = "60대";
+                else if(age >= 50)
+                 box.innerText = "50대";
+                else if(age >= 40)
+                 box.innerText = "40대";
+                else if(age >= 30)
+                 box.innerText = "30대";
+                else if(age >= 20)
+                 box.innerText = "20대";
+                else if(age >= 10)
+                 box.innerText = "10대";
+                else if(age >= 0)
+                 box.innerText = "아기";
+                else
+                 box.innerText = "배 속에 있음"
+                
+
+            }else{
+             alert("나이를 입력하세요");
+             sc.value = "";
+             sc.focus();
+            }
+        }
+    </script>
+</body>
+</html>
+

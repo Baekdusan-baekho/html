@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 400px;
+            height: 300px;
+            border: 1px solid blue;
+            font-size: 100px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 300px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <label for="score">점수입력:</label>
+        <input type="text" id="score" name="u_score"/><br/>
+        <button type="button" onclick="test()">확인</button>
+    </form>
+    <div id="box"></div>
+    <script>
+        function test(){
+            let v1 = document.getElementById("score").value;
+            let value = parseInt(v1);
+            let box = document.getElementById("box");
+
+            //점수가 90점 이상이면 우수 value >= 90
+            //점수가 60 ~ 89점 사이이면 보통 value >= 60 value <= 89
+            //점수가 60점 이하면 노력 value < 60
+
+            // 중첩 if문
+
+            //95점 이상이면 A+ 90점 이상이면 A- 85~89점 B+ 80~84점 B-
+            // 75~79 C+ 70~74 C- 60~69 D 
+
+            if(value >= 95){
+
+                box.innerText = "A+";
+                
+
+            }else if(value >= 90 && value < 95){ 
+                
+                box.innerText = "A-";
+            }
+            else if(value >= 85 && value < 90){ 
+                
+                box.innerText = "B+";
+            }
+            else if(value >= 80 && value < 85){ 
+                
+                box.innerText = "B-";
+            }
+            else if(value >= 75 && value < 80){ 
+                
+                box.innerText = "C+";
+            }
+            else if(value >= 70 &&value < 75){ 
+                
+                box.innerText = "C-";
+            }
+            else if(value >= 60 && value < 70){
+                box.innerText = "D";
+            }
+            else{
+                box.innerText = "F";
+            }
+            
+            
+
+
+
+
+        }
+
+
+
+    </script>
+</body>
+</html>

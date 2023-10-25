@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><!-- onclick에 함수이름() -->
+    <input type="button" value="버튼1" onclick="test1()"/>
+    <br/>
+    <button type="button" onclick="test2()">버튼2</button>
+    <br/>
+    <button type="button" onclick="test3(200, 10)">버튼3</button>
+    <script>
+        // let 변수 선언 function 함수 선언
+
+        let a = 10; //전역변수 선언
+        function test1(){
+            // 현재 화면에 a의 값을출력하자!
+            document.write(a);
+        }
+        function test2(){
+            let b = 30; //지역변수 선언
+            alert("a+b"+a+b); //경고창 보여주기 +연산자가 연결해줘서 문자열로 바뀜 더하기 안됨
+            //"a+b:10"30 10은 일과 영 열이 아니다
+            alert("a+b"+(a+b));
+        }
+        function test3(n1, n2){ //버튼3을 클릭할 때 호출되는 함수
+            //이때 전달되는 200이 n1   10이 n2에 대입된다. n1 n2는 지역변수이다 
+            alert(n1+n2+a);
+
+        }
+        document.write();
+    </script>
+</body>
+</html>

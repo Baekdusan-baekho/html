@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="적용" id="btn"/>
+    <div>
+        <p>야호</p>
+        <em>월요일</em>
+        첫번째 div   <!--자식요소아님 -->
+    </div>
+    <div>
+        <p>몰디브</p>
+        <p>산토리니</p>
+        <p>그루토</p>
+    </div>
+    <p>가자~~!</p>
+    
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            //div들 중 첫번재 div의 자식요소들에게
+            //글꼴색을 red로 변경해 보자.
+            // let count = $("div")[0].children.length;
+            //alert(count);
+            //$("div")[0].children.css("color", "#f00"); 작동이 안돼는 오류 문법 벗어남
+            //[0]배열이라 jquery문법과 맞지 않음 그래서 css함수를 사용할 수 없다.
+            $("div").eq(0).children().css("color","#f00"); //eq가 배열의 인덱스
+
+            //아이디가 btn인 요소를 클릭했을 때
+            let flag = true;
+            $("#btn").click(function(){
+
+                if(flag){
+                  //두번째 div의 자식 요소들에게 test라는 클래스를 적용!
+                  $("div").eq(1).children("p").addClass("test") //removeClass는 빼는 것이다 많이 사용한다.
+                
+                  //클릭이벤트를 발생시킨 버튼객체(this)의 value를 변경
+                //   this.value = "해제"
+                  $(this).val("해제");
+                  
+                
+                }else{
+                    //두번째 div의 자식들 중 p태그들에게 적용된 test클래스를 삭제한다.
+                    $("div").eq(1).children("p").removeClass("test"); //클래스를 빼주는 동적인 움직임 많이 사용함
+                    $(this).val("적용");
+                }
+                flag = !flag;
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

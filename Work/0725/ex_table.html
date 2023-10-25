@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>     /* img 태그들 모두에게 적용   .은 클래스 만듬 이름만 만들면 이름이 들어간 객체에 전체 적용  이름은 태그 .은 클래스*/
+        img{
+            width: 170px;
+            height: 170px;
+            text-align: center;
+        }
+        td, th, .text{  
+            width: 100px;
+            height: 80px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid black; /* 단선 검은색 1px 얇은 실선 */
+        }/* td 또는 th 또는 클래스text 모두 적용 ,는 마음껏 할 수 있다. ,는 or 의미 */
+        table{
+            /*border-spacing: 0px; 선 1개가 아니라 선 2개가 합쳐져서 한개로 보임 두껍게
+            border: 0px; */
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td><img src="images/스크린샷 2023-07-25 110553.png"/></td>
+                <td>동물1</td>
+                <td><img src="images/스크린샷 2023-07-25 110635.png"/></td>
+            </tr>
+            <tr>
+                <td>동물2</td>
+                <td><img src="images/스크린샷 2023-07-25 110657.png"/></td>
+                <td>동물3</td>
+            </tr>
+            <tr>
+                <td><img src="images/스크린샷 2023-07-25 110716.png"/></td>
+                <td>동물4</td>
+                <td><img src="images/스크린샷 2023-07-25 110745.png"/></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+</body>
+</html>

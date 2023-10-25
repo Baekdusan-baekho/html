@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 150px;
+            border: 1px solid blue;
+            text-align: center;
+            font: 40px bold;
+            margin-top: 10px;
+            color: blue;
+            line-height: 300%;
+
+        }
+    </style>
+</head>
+<body>
+    <form method="post"> <!--서버로 보낸다-->
+        <label for="age">나이</label>
+        <input type="text" id="age" name="u_age"/>
+        <button type="button" onclick="exe(this.form)">확인</button>
+        <!--this는 현재객체를 매개변수로 사용한다. this.form은 this가 속해있는 form을
+        다 가져온다 버튼이 포함되어 있는 폼을 인자로 보낼거야
+        input type text 전부보낸다 몇 개가 있더라도 근데 form만 사용가능하다.
+        this는 표기된 해당 객체를 의미한다. 여기서는 버튼을 의미한다.
+        그리고 this.form은 버튼이 포함된 폼객체 전체를 의미한다.
+        ext함수를 호출할 때 인자로 폼전체를 전달한다.-->
+    </form>
+    <div id="box"></div>
+
+    <script>
+        let box = document.getElementById("box");
+        let msg = "";
+        
+
+        function exe(frm){
+            //이름으로 접근하여 데이터를 받는다.     .은 폼안에
+            //인자 frm은 폼이다. 그리고 폼 안에 있는 요소들을 접근할 때는
+            //아이디가 아니라 name으로 접근해야 한다.
+            let age = parseInt(frm.u_age.value);
+            
+            if(age >= 70)
+               msg = "노년";
+            else if(age >= 60)
+               msg = "60대";
+            else if(age >= 50)
+               msg = "50대";
+            else if(age >= 40)
+               msg = "40대";
+            else if(age >= 30)
+               msg = "30대";
+            else if(age >= 20)
+               msg = "20대";
+            else if(age >= 10)
+               msg = "10대";
+            else
+               msg = "어린이";
+
+            
+            box.innerText = msg;
+
+        }
+    </script>
+    
+</body>
+</html>

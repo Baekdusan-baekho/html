@@ -1,0 +1,48 @@
+div#popup{
+    border: 1px solid black;
+    width: 250px;
+    height: 150px;
+    background-color: rgb(170, 168, 168);
+    /*현재 팝업창은 body를 기준하여 위에서 110px, 왼쪽에서 350px 떨어진 곳에 위치한다*/
+    position: absolute;
+    top: 110px;
+    left: 200px;
+    display: none;
+}
+div#title_bar{
+    width: 100%;
+    height: 20px;
+    border-bottom: 1px solid black;
+    background-color: rgb(57, 174, 252);
+    text-align: right;
+    position: relative;
+}
+div#exit_area{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    /* border: 1px solid red; */
+    right: 0px;
+}
+/* id가 exit_area인 요소안에 있는 a태그의 크기를 16px로 지정하고 배경이미지를 exit_png로 바꾼다
+그리고 글꼴은 안보이도록 하시오  절대좌표를 가지며 오른쪽 끝에 존재해야 한다.*/
+div#exit_area>a{
+    background-image: url(../images/exit.png);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    /* border: 1px solid red; */
+    font-size: 0;
+    position: absolute;
+    text-indent: -999999px;
+    right: 0px;
+    background-image: url(../images/exit.png);
+    background-size: 20px;
+    top: 0px;
+    background-repeat: no-repeat;
+}
+div#title_bar img{
+    width: 20px;
+    height: 20px;
+
+}

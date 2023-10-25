@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let i = 1;
+        while(i<=10){
+            document.write(i+"<br/>");
+
+            if(i%3==0)
+                break;
+            ++i;//증감식 (이 부분이 생략되면 무한반복이 된다.)
+        }
+
+        document.write("-----------------<br/>")
+        document.write("3의 배수는출력하지 않도록 하자.<br/><br/>")
+
+        i = 0; // 위에 while문을 거치면서 i의 값이 달라지게 되며
+        //그것이 오류의 원인이라 다시 초기화한 것이다.
+
+        while(i<10){ // i가 10보다 작거나 같다면 반복문 수행
+            ++i; // i에 1씩 증가
+            if(i%3 != 0) //i를 3으로 나누었을 때 나머지가 0이면
+                continue; // 다음 회차로 이동(최근 while문으로 이동)
+                //이 조건이 만족했을 때 조건문으로 이동한다. 아래로 이동 안함
+
+
+                //for문은 증감식으로 이동
+
+
+            document.write(i+"<br/>");
+            //++i;    주석한 이유 여기에 증감식이 있으면
+            // continue문을 만날 때 수행하지 못하므로 무한반복에 빠지게 된다.
+
+        }
+    </script>
+</body>
+</html>

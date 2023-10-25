@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        
+
+        // 논리 연산자는 3가지 정도가 있다 &&(그리고), ||(또는 or), !(부정)
+
+        let a = 10;
+        let b = 8;
+
+        let c = (a > b && b != 0);
+
+        c = (++a > b-- && ++a != 0) // 논리연산자는 && 둘다 만족하면 True 
+        //앞에 True 일 때만 && 앞 뒤 모두 수행한다 앞에 것이 false이기 때문에 앞에만 수행한다
+        //앞에 a는 11 b는 7이다 앞에 False이기 때문에 뒤에 수행하지 않는다.
+        document.write("<br/>");
+        document.write(a);
+        document.write("<br/>");
+        document.write(b);
+        document.write("<br/>");
+        document.write(c);
+        document.write("<br/>");
+
+        c = (++a < b-- || ++a != 14) // 한개만 True이면 결과 True
+        // 앞에서 True가 나오면 뒤에 뭐가 나오든 수행하지 않는다 앞에만 수행한다.
+        // 뒤에 True가 나오면 앞 뒤 모두 수행
+        document.write("<br/>");
+        document.write(a);
+        document.write("<br/>");
+        document.write(b);
+        document.write("<br/>");
+        document.write(c);
+        // 수행결과 false 이지만 이미 수행을 해서 false가 나왔기 때문에 이미 계산된 내용이다.
+        
+
+        
+
+
+
+    </script>
+</body>
+</html>
